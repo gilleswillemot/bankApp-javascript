@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Banksoverview</title>
+</head>
+
+<body>
+  <script type="text/javascript" src="js/kotlin.js"></script>
+  <script type="text/javascript" src="js/core.js"></script>
+  <script type="text/javascript" src="js/bankprovidermodule.js">
+  </script>
+  <script type="text/javascript">
+    window.onload = () => {
+      const bankProvider = new bankprovidermodule.be.abstraction.providers.BankProvider();
+      const banksObject = bankProvider.getBanks();
+      const banks = banksObject[Object.keys(banksObject)[1]];
+
+      console.log(banks);
+      for (var i = 0; i < banks.length; i++) {
+        const bank = document.createElement("p");
+        const node = document.createTextNode(banks[i].name);
+        bank.appendChild(node);
+        document.getElementById("bankList").appendChild(bank);
+      }
+    };    
+  </script>
+  <h1>Banksoverview</h1>
+  <div id="bankList"></div>
+</body>
+
+</html>
